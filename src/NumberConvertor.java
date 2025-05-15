@@ -19,7 +19,11 @@ public class NumberConvertor {
 
     public String decimalConvertor (int base, int number){
         String convertedNumber = "";
+        int temp = number;
 
+        if (number < 0){
+            number *= -1;
+        }
         while (number > 0){
             int lastDigit = number % base;
             if (lastDigit >= base){
@@ -40,6 +44,9 @@ public class NumberConvertor {
                 convertedNumber = lastDigit + convertedNumber;
             }
             number /= base;
+        }
+        if (temp < 0){
+            convertedNumber = "-" + convertedNumber;
         }
         return convertedNumber;
     }
@@ -70,6 +77,9 @@ public class NumberConvertor {
             char digit = hexNumber.charAt(i);
             int value = 0;
 
+            if (digit == '-'){
+                continue;
+            }
             if (digit >= 'A' && digit <= 'F'){
                 value = decBase + (digit - 'A');
             }
@@ -83,6 +93,9 @@ public class NumberConvertor {
                 System.out.println("Invalid Number");
             }
             result = result * hexBase + value;
+        }
+        if (hexNumber.charAt(0) == '-'){
+            result = result * -1;
         }
         return result;
     }

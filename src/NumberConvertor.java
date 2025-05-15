@@ -1,7 +1,7 @@
 public class NumberConvertor {
 
     final int originalNumber;
-    final String hexNumber;
+    final String originalHexNumber;
 
     final int decBase = 10;
     final int binBase = 2;
@@ -10,13 +10,14 @@ public class NumberConvertor {
 
     public NumberConvertor(int originalNumber) {
         this.originalNumber = originalNumber;
-        this.hexNumber = null;
+        this.originalHexNumber = null;
     }
-    public NumberConvertor(String hexNumber) {
-        this.hexNumber = hexNumber;
+    public NumberConvertor(String originalHexNumber) {
+        this.originalHexNumber = originalHexNumber;
         this.originalNumber = 0;
     }
 
+    //Convert a number of decimal base to any base
     public String decimalConvertor (int base, int number){
         String convertedNumber = "";
         int temp = number;
@@ -45,9 +46,14 @@ public class NumberConvertor {
             }
             number /= base;
         }
-        return convertedNumber;
+        if (temp < 0){
+            convertedNumber = "-" + convertedNumber;
+        }
+        String addLetter = (base == 8) ? "0o" : (base == 16 ? "0x" : "0b");
+        return addLetter + convertedNumber;
     }
 
+    //Converts the numbers of base 2 and 8 to a decimal base.
     public int convertToDecimal(int convertToBase){
         int base = 1;
         int number = originalNumber;
@@ -68,6 +74,7 @@ public class NumberConvertor {
         return decNum;
     }
 
+    //Converts a binary base to octal and hex base
     public String binaryConvertor (int base) {
         if (base == octBase){
             return decimalConvertor(octBase, convertToDecimal(binBase));
@@ -75,10 +82,11 @@ public class NumberConvertor {
         return decimalConvertor(hexBase, convertToDecimal(binBase));
     }
 
+    //Converts a hex base to a decimal place
     public int convertHexToDecimal (){
         int result = 0;
-        for (int i = 0; i < hexNumber.length(); i++){
-            char digit = hexNumber.charAt(i);
+        for (int i = 0; i < originalHexNumber.length(); i++){
+            char digit = originalHexNumber.charAt(i);
             int value = 0;
 
             if (digit == '-'){
@@ -98,8 +106,8 @@ public class NumberConvertor {
             }
             result = result * hexBase + value;
         }
-        if (hexNumber.charAt(0) == '-'){
-            result = result * -1;
+        if (originalHexNumber.charAt(0) == '-'){
+            result *= -1;
         }
         return result;
     }

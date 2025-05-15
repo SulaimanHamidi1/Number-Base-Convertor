@@ -11,12 +11,12 @@ public class Decimal extends NumberConvertor {
     }
 
     public String getDecimalToBinary (){
-        return "0b" + super.decimalConvertor(binBase, decNum);
+        return super.decimalConvertor(binBase, decNum);
     }
     public String getDecimalToOctal (){
-        return "0o" + super.decimalConvertor(octBase, decNum);
+        return super.decimalConvertor(octBase, decNum);
     }
     public String getDecimalToHex (){
-        return "0x" + super.decimalConvertor(hexBase, decNum);
+        return super.decimalConvertor(hexBase, decNum);
     }
 }

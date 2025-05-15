@@ -46,11 +46,13 @@ public class NumberConvertor {
             }
             number /= base;
         }
+        String addLetter = (base == 8) ? "0o" : (base == 16 ? "0x" : "0b");
+        convertedNumber = addLetter + convertedNumber;
+
         if (temp < 0){
             convertedNumber = "-" + convertedNumber;
         }
-        String addLetter = (base == 8) ? "0o" : (base == 16 ? "0x" : "0b");
-        return addLetter + convertedNumber;
+        return convertedNumber;
     }
 
     //Converts the numbers of base 2 and 8 to a decimal base.

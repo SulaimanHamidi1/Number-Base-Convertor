@@ -52,11 +52,18 @@ public class NumberConvertor {
         int base = 1;
         int number = originalNumber;
         int decNum = 0;
+
+        if (number < 0){
+            number *= -1;
+        }
         for (int i = 0; number > 0; i++){
             int lastDigit = number % 10;
             decNum = (lastDigit * base) + decNum;
             base *= convertToBase;
             number /= 10;
+        }
+        if (originalNumber < 0){
+            decNum *= -1;
         }
         return decNum;
     }

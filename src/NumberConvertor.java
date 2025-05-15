@@ -45,9 +45,6 @@ public class NumberConvertor {
             }
             number /= base;
         }
-        if (temp < 0){
-            convertedNumber = "-" + convertedNumber;
-        }
         return convertedNumber;
     }
 

@@ -105,6 +105,7 @@ public class NumberConvertor {
             }
             else {
                 System.out.println("Invalid Number");
+                return -1;
             }
             result = result * hexBase + value;
         }

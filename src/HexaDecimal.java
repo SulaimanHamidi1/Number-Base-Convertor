@@ -8,7 +8,7 @@ public class HexaDecimal extends NumberConvertor{
         return super.convertHexToDecimal();
     }
 
-    public String getHexToBinary (){
+    public String getHexToBinary () {
         return super.decimalConvertor(super.binBase, getHexToDecimal());
     }
 

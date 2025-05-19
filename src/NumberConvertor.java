@@ -46,8 +46,8 @@ public class NumberConvertor {
             }
             number /= base;
         }
-        String addLetter = (base == 8) ? "0o" : (base == 16 ? "0x" : "0b");
-        convertedNumber = addLetter + convertedNumber;
+        String prefix = (base == 8) ? "0o" : (base == 16 ? "0x" : "0b");
+        convertedNumber = prefix + convertedNumber;
 
         if (temp < 0){
             convertedNumber = "-" + convertedNumber;

@@ -87,6 +87,7 @@ public class UserInterface {
 
                 case 5:
                     System.out.println("Goodbye!");
+                    scanner.close();
                     return secondInput;
             }
 
@@ -96,6 +97,7 @@ public class UserInterface {
                 secondInput = Integer.parseInt(userInput);
                 if (secondInput >= 1 && secondInput <= 5) {
                     if (secondInput == 5){
+                        scanner.close();
                         System.out.println("Goodbye!");
                     }
                     return secondInput;
